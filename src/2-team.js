@@ -2,59 +2,66 @@
 // Implement your Player and Team classes below
 
 class Player {
-    constructor(name, position, jerseyNumber) { 
+    constructor(name, position, jerseyNumber) {
         this.name = name
         this.position = position
         this.jerseyNumber = jerseyNumber
     }
-
-
 }
 
 class Team {
     #starters = []
     #bench = []
-    constructor(name) { 
+
+    constructor(name) {
         this.name = name
-        Player.allPlayer.push(this)
     }
 
-    get starters() { 
+    get starters() {
         return this.#starters
     }
 
-    get bench() { 
+    get bench() {
         return this.#bench
     }
-    addBenchPlayer(player) { 
+
+    getStarters() {
+        return this.#starters
+    }
+
+    getBench() {
+        return this.#bench
+    }
+
+    addBenchPlayer(player) {
         this.#bench.push(player)
     }
-    
-    getPlayerCount() { 
+
+    getPlayerCount() {
         return this.#bench.length + this.#starters.length
     }
 
-    moveToBench(name) { 
+    moveToBench(name) {
         let currentPlayer = this.#starters.find((player) => player.name === name)
-        if (!currentPlayer) { 
+        if (!currentPlayer) {
             return false
         }
         let i = this.#starters.indexOf(currentPlayer)
         this.#starters.splice(i, 1)
         this.#bench.push(currentPlayer)
+        return true
     }
 
-     moveToStarter(player) { 
-         let foundIndex = this.addBenchPlayer.findIndex((player) => player.name === this.name)
-         if (findIndex === -1) { 
-             return false
-         }
-         let found = this.#bench.splice()
-
-
-
-
+    moveToStarters(name) {
+        let currentPlayer = this.#bench.find((player) => player.name === name)
+        if (!currentPlayer) {
+            return false
+        }
+        let i = this.#bench.indexOf(currentPlayer)
+        this.#bench.splice(i, 1)
+        this.#starters.push(currentPlayer)
+        return true
+    }
 }
 
 module.exports = { Player, Team };
-

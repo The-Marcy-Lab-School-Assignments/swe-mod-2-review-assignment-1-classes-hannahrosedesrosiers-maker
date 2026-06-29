@@ -46,6 +46,6 @@ b) Give an example of when you would want to use a static property or method ins
 
 ### Response 3
 
-a) Your response...
+a) An instance property belongs to one object made from a class. Each instance can have its own value. A static property belongs to the class itself, so you use it from the class and not from one object.
 
-b) Your response...
+b) I would use a static property or method when the information or behavior is for the whole class. For example, a Player class could have a static `teamName` or a static method that counts how many players were created, because that is about the class overall and not just one player.
